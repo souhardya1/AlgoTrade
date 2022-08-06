@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles/Index.css') }}">
+
+</head>
+
+<body>
+  <header>
+
+    <div id="navbar">
+      <a id="logo" href="{{url_for('homepage')}}">AlgoTrade</a>
+      <a class="nav-link" id="about" href="{{url_for('about')}}">About Us</a>
+      <a class="nav-link" id="contact" href="{{url_for('contact')}}">Contact Us</a>
+    </div>
+
+  </header>
+  <div class="home1">
+    <div class="cont c1">
+
+        <h1 class="fu">Already have an account?</h1>
+        <a href="{{url_for('signin')}}"><button class="glow-on-hover" type="button"> Sign In</button></a>
+
+      <h1 class="fu">New User?</h1>
+      <a href="{{url_for('signup')}}"><button class="glow-on-hover" type="button" >Sign Up</button></a>
+    </div>
+    <div class="cont">
+      <img class="homeImage" src="{{ url_for('static',filename='img/graph.jpeg')}}" alt="">
+    </div>
+
+    <div class="">
+
+    </div>
+  </div>
+  <div class="home2">
+    <h1 class="con">What Is the Stock Market?</h1>
+    <p class="con">The stock market broadly refers to a number of exchanges and other venues in which shares of publicly held companies are bought and sold. Such financial activities are conducted through institutionalized formal exchanges (physical
+      or electronic) and via over-the-counter (OTC) marketplaces that operate under a defined set of regulations.
+
+      While both the terms “stock market” and “stock exchange” are often used interchangeably, the latter term is really a subset of the former. Traders in the stock market buy or sell shares on one or more of the stock exchanges that are part of the
+      overall stock market.
+
+      The leading U.S. stock exchanges include the New York Stock Exchange (NYSE) and the Nasdaq. These leading national exchanges, along with several others operating in the country, form the stock market of the United States.</p>
+
+  </div>
+
+  <div class="home3">
+
+    <h1 class="con">How Does the Stock Market Work?</h1>
+    <p class="con">If the thought of investing in the stock market scares you, you are not alone. Individuals with very limited financial experience are either terrified by horror stories of average investors losing 50% of their portfolio value or
+      are beguiled by "hot tips" that bear the promise of huge rewards but seldom pay off. It is not surprising, then, that the pendulum of investment sentiment is said to swing between fear and greed.
+
+      The reality is that investing in the stock market carries risk, but when approached in a disciplined manner, it is one of the most efficient ways to build up one's net worth. While the average individual keeps most of their net worth in their
+      home, the affluent and very rich generally have the majority of their wealth invested in stocks.1 In order to understand the mechanics of the stock market, let's begin by delving into the definition of a stock and its different types.</p>
+
+  </div>
+
+  <div class="home4">
+
+    <h1 class="con">Why you should invest in stock marke?</h1>
+    <p class="con">1 power of compounding <br>
+      2 win the race against inflation <br>
+      3 powerfull long term investment</p>
+
+
+
+  </div>
+  <footer class="fo">
+    <span>&copyAlgoTrade</span>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/SignIn.css') }}"
+    />
+    <script type="text/javascript" src="script.js"></script>
+    <title>AlgoTrade</title>
+
+  </head>
+
+  <body>
+    <div>
+      <div id="navbar">
+        <a id="logo" href="{{url_for('homepage')}}">AlgoTrade</a>
+        <a class="nav-link" id="about" href="{{url_for('about')}}">About Us</a>
+        <a class="nav-link" id="contact" href="{{url_for('contact')}}"
+          >Contact Us</a
+        >
+        <!-- <a  class="nav-link" id="logout" href="{{url_for('signin')}}">Log Out</a> -->
+      </div>
+
+      <div id="signin">
+        <form method="post">
+          <!--TODO get the name of the user or get the email of the user-->
+
+          <div class="img-container">
+            <img
+              src="{{ url_for('static',filename='img/logo.png') }}"
+              class="logo"
+            />
+          </div>
+
+          <div class="container">
+
+            <input
+              type="text"
+              placeholder="Enter Email Address"
+              name="email"
+              required
+            /><br />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              required
+            /><br />
+            <a href="{{url_for('home')}}"
+              ><button id="inpbtn" type="submit">Sign In</button></a
+            ><br />
+            <label>
+              <input  type="checkbox" checked="checked" name="remember" />
+              <p style="color: white;">Remember me</p>
+            </label>
+          </div>
+        </form>
+
+        <div id="register">
+          <p>Still not a member?</p>
+          <a href="{{url_for('signup')}}">Register Yourself</a>
+        </div>
+
+      </div>
+
+      <div id="error-container">
+        {% for message in get_flashed_messages() %}
+          <p id="error">{{message}}</p>
+        {% endfor %}
+      </div>
+
+    </div>
+  </body>
+</html>

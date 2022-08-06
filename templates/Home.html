@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlgoTrade</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/Home.css') }}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <scrip src="{{ url_for('static', filename = 'scripts/Home.js' ) }}"></scrip>
+  </head>
+  <body>
+    <div>
+      <div id="navbar">
+        <a id="logo" href="{{url_for('homepage')}}">AlgoTrade</a>
+        <a class="nav-link" id="about" href="{{url_for('about')}}">About Us</a>
+        <a class="nav-link" id="contact" href="{{url_for('contact')}}">Contact Us</a>
+        <a class="nav-link" id="logout" href="{{url_for('signin')}}">Log Out</a>
+
+      </div>
+    </div>
+
+    <h2>Hi, {{ user}}</h2>
+
+    <div id="graph-container">
+      Google Stock Price
+      <canvas id="graph"></canvas>
+    </div>
+   
+
+    <div id="all-finance" class="par">
+      <div id="gross-profit-container" class="ch">
+        <canvas id="gross-profit"></canvas>
+      </div>
+      <div id="research-development-container" class="ch">
+        <canvas id="research-development"></canvas>
+      </div>
+      <div id="net-income-container" class="ch">
+        <canvas id="net-income"></canvas>
+      </div>
+      <div id="total-revenue-container" class="ch">
+        <canvas id="total-revenue"></canvas>
+      </div>
+    </div>
+    <div class="par">
+      <div id="news-container" class="ch">
+        <h2>Google Stock Market News</h2>
+        <table id="news-tbl">
+          <tr>
+            <th>News</th>
+            <th>Sentiment Score</th>
+            <th>Bert Score</th>
+          </tr>
+          {% for headline,compound,sentiment in headline_compound_sentiment %}
+            <tr id="news-row">
+              <td>{{ headline }}</td>
+              <td>{{ compound }}</td>
+              <td>{{ sentiment }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div class="ch pred">
+        <div id="sentiment-analyzed">
+          <h2 class="lines">Market Sentiment Right Now</h2>
+          <h1>{{bull_bear}}</h1>
+        </div>
+        <div id="pred_price">
+          <canvas id="predicted_graph"></canvas>
+          <h2>{{last_day_pred_price}}</h2>
+          <h2 class="lines">Predicted Price after 30 Days</h2>
+        </div>
+      </div>
+    </div>
+    <footer class="fo">
+      <span>&copyAlgoTrade</span>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+      <!-- Creating a graph using the Chart.js library. -->
+      var pred_ctx = document.getElementById("predicted_graph").getContext("2d");
+      var pred_line = new Chart(pred_ctx,{
+        type:"line",
+        data:{
+          labels: {{ temp_date | safe }},
+          datasets: [{
+            label: "Close",
+            data: {{ ritz | safe }},
+            fill: true,
+            backgroundColor: "black",
+            borderColor: "#ADFF2F",
+            lineTension: 0.1
+          }]
+        },
+        options: {
+          responsive:false,
+          legend: {
+            position: "bottom"
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontStyle: "bold",
+                },
+                gridLines: {
+                  drawTicks: true,
+                  display: true
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                  zeroLineColor: "transparent"
+                },
+                ticks: {
+                  fontColor: "white",
+                  fontStyle: "bold"
+                }
+            }]
+          }
+        }
+      });
+
+
+      <!-- Creating a graph using the Chart.js library. -->
+      var ctx = document.getElementById("graph").getContext("2d");
+      var line = new Chart(ctx,{
+        type:"line",
+        data:{
+          labels: {{ labels | safe }},
+          datasets: [{
+            label: "Close",
+            data: {{ values | safe }},
+            fill: true,
+            backgroundColor: "black",
+
+            borderColor: "#ADFF2F",
+            lineTension: 0.1
+          }]
+        },
+        options: {
+          responsive:false,
+          legend: {
+            position: "bottom"
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontStyle: "bold",
+                },
+                gridLines: {
+                  drawTicks: true,
+                  display: true
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                  zeroLineColor: "transparent"
+                },
+                ticks: {
+                  fontColor: "white",
+                  fontStyle: "bold"
+                }
+            }]
+          }
+        }
+      });
+
+      var ctx1 = document.getElementById("gross-profit").getContext("2d");
+      var line1 = new Chart(ctx1,{
+        type:"bar",
+        data:{
+          labels: {{ graph_index | safe }},
+          datasets: [{
+            label: "Gross-Profit",
+            data: {{ gp | safe }},
+            fill: true,
+            backgroundColor: "#ADFF2F",
+
+            borderColor: "#ADFF2F",
+            lineTension: 0.1
+          }]
+        },
+        options: {
+          responsive:false,
+          legend: {
+            position: "bottom"
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                fontColor: "white",
+
+                },
+                gridLines: {
+                  drawTicks: false,
+                  display: false
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                  zeroLineColor: "transparent"
+                },
+                ticks: {
+                  fontColor: "white",
+
+                }
+            }]
+          }
+        }
+      });
+
+      var ctx2 = document.getElementById("net-income").getContext("2d");
+      var line2 = new Chart(ctx2,{
+        type:"bar",
+        data:{
+          labels: {{ graph_index | safe }},
+          datasets: [{
+            label: "Net-Income",
+            data: {{ ni | safe }},
+            fill: true,
+            backgroundColor: "#ADFF2F",
+
+            borderColor: "white",
+            lineTension: 0.1
+          }]
+        },
+        options: {
+          responsive:false,
+          legend: {
+            position: "bottom"
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                fontColor: "white",
+
+                },
+                gridLines: {
+                  drawTicks: false,
+                  display: false
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                  eroLineColor: "transparent"
+                },
+                ticks: {
+                  fontColor: "white",
+
+                }
+            }]
+          }
+        }
+      });
+
+      var ctx3 = document.getElementById("total-revenue").getContext("2d");
+      var line3 = new Chart(ctx3,{
+        type:"bar",
+        data:{
+          labels: {{ graph_index | safe }},
+          datasets: [{
+            label: "Total-Revenue",
+            data: {{ tr | safe }},
+            fill: true,
+            backgroundColor: "#ADFF2F",
+
+            borderColor: "white",
+            lineTension: 0.1
+          }]
+        },
+        options: {
+          responsive:false,
+          legend: {
+            position: "bottom"
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                fontColor: "white",
+
+                },
+                gridLines: {
+                  drawTicks: false,
+                  display: false
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                  eroLineColor: "transparent"
+                },
+                ticks: {
+                  fontColor: "white",
+
+                }
+            }]
+          }
+        }
+      });
+
+      var ctx4 = document.getElementById("research-development").getContext("2d");
+      var line4 = new Chart(ctx4,{
+        type:"bar",
+        data:{
+          labels: {{ graph_index | safe }},
+          datasets: [{
+            label: "Research-Development",
+            data: {{ rd | safe }},
+            fill: true,
+            backgroundColor: "#ADFF2F",
+
+            borderColor: "white",
+            lineTension: 0.1
+          }]
+        },
+        options: {
+          responsive:false,
+          legend: {
+            position: "bottom"
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                fontColor: "white",
+
+                },
+                gridLines: {
+                  drawTicks: false,
+                  display: false
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                  eroLineColor: "transparent"
+                },
+                ticks: {
+                  fontColor: "white",
+
+                }
+            }]
+          }
+        }
+      });
+
+
+
+    </script>
+    <!-- TODO-- All the design, prediction, graphs  !-->
+  </body>
+</html>

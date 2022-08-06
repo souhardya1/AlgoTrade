@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat:ital,wght@1,300&display=swap');
+body{
+    margin: 0;
+    margin-right: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: black;
+
+}
+
+h1{
+    margin-right: 0;
+    margin-bottom: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    margin-top: 20px;
+    color: #ADFF2F;
+}
+
+p{
+    color: white;
+}
+
+img{
+    margin-top: 0;
+}
+
+#navbar{
+    background-color: black;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.nav-link{
+
+    text-decoration: none;
+    color:#ADFF2F;
+    padding: 20px;
+    font-size: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.nav-link:hover {
+    background-color: #ADFF2F;
+    color:white;
+
+    transition:  .5s ease-in-out;
+    box-shadow: .5s ease-in-out;
+
+}
+
+#body-content{
+    margin: 55px;
+    width: 90%;
+}
+
+#logo{
+    margin-right: 65%;
+    text-decoration: none;
+    color:#ADFF2F
+    font-size: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+#who{
+   width: 100%;
+   margin-left: 10px  ;
+
+
+}
+
+#who-pic{
+    width: 20%;
+    margin-left: 20%;
+    float: right;
+}
+
+#who-body{
+    width: 50%;
+    margin-top: 100px;
+    margin-right: 20%;
+    margin-left: 20px;
+}
+
+#aim{
+    width: 100%;
+    text-align: right;
+    margin-top: 20%;
+    margin-bottom: 50%;
+
+    text-align: right;
+}
+
+#aim-pic{
+    float: left;
+}
+
+#aim-body{
+    float: right;
+    width: 40%;
+    margin-right: 0px;
+    margin-top:80px;
+
+    text-align: right;
+    margin-left: 20%;
+}
+
+#terms{
+    width: 100%;
+    margin-left: 10px;
+}
+
+
+#terms-pic{
+    float: right;
+}
+
+
+#terms-body{
+    margin-top: 80px;
+}

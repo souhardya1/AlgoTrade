@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlgoTrade</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/About.css') }}"
+    />
+    <!-- <link rel="stylesheet" type="text/css" href="../Static/styles/About.css"> -->
+
+  </head>
+  <body>
+    <div>
+      <div id="navbar">
+        <a id="logo" href="{{url_for('homepage')}}">AlgoTrade</a>
+        <a class="nav-link" id="about" href="{{url_for('about')}}">About Us</a>
+        <a class="nav-link" id="contact" href="{{url_for('contact')}}"
+          >Contact Us</a
+        >
+        <a class="nav-link" id="logout" href="{{url_for('signin')}}">Log Out</a>
+      </div>
+
+      <div id="body-content">
+        <div id="who">
+          <h1>Who are we</h1>
+          <div id="who-pic">
+            <img src="{{url_for('static',filename='img/who.png')}}" alt="" />
+          </div>
+          <div id="who-body">
+            <p>
+              We are a few data science enthusiasts who are trying to make solve
+              the financial market using the power of artificial intelligence
+              and data.
+            </p>
+          </div>
+        </div>
+        <br />
+
+        <div id="aim">
+          <h1>Our aim</h1>
+          <div id="aim-pic">
+            <img src="{{url_for('static',filename='img/aim.png')}}" alt="" />
+          </div>
+          <div id="aim-body">
+            <p>
+              Our aim is to make investment easy for beginners in the market by
+              providing market sentiment and price prediction based on LSTM and
+              BERT sentiment analysis. Our goal is to make fundamental and
+              technical analysis of a stock easier, for now we are working with
+              Google stock prices but we will add more in the future. To
+              identify the fundamental strength of a stock, the Petroski F-Score
+              and the market sentiment with the companies financial data is
+              enough. On our platform you will get access to all of it in a
+              great visual format which will make trading a lot easier for you
+              in the short term as well as the long term
+            </p>
+          </div>
+        </div>
+        <br />
+
+        <div id="terms">
+          <h1>What we dont advice</h1>
+          <div id="terms-pic">
+            <img src="{{url_for('static',filename='img/terms.png')}}" alt="" />
+          </div>
+          <div id="terms-body">
+            <p>
+              We don't claim our algorithms to be 100% accurate, our algorithms
+              are more of a confirmation indicator which can help you identify
+              trends in the market. Always do your own research before investing
+              in any financial market and risk only that much money which you can
+              happily lose.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

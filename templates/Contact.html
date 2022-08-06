@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlgoTrade</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/Contact.css') }}"
+    />
+
+  </head>
+  <body>
+    <div>
+      <div id="navbar">
+        <a id="logo" href="{{url_for('homepage')}}">AlgoTrade</a>
+        <a class="nav-link" id="about" href="{{url_for('about')}}">About Us</a>
+        <a class="nav-link" id="contact" href="{{url_for('contact')}}"
+          >Contact Us</a
+        >
+        <a class="nav-link" id="logout" href="{{url_for('signin')}}">Log Out</a>
+      </div>
+
+      <h1>Meet our Team</h1>
+      <hr />
+      <div id="body-content">
+        <h3>Souhardya Chakraborty</h3>
+        <p>Phone Number: 9062663145</p>
+        <p>
+          <a href="mailto:souhardyaofficial@gmail.com">Send and email here</a>
+        </p>
+
+        <h3>Haque Usuf Uhana</h3>
+        <p>Phone Number: 8609175800</p>
+        <p><a href="mailto:uhana@gmail.com">Send an email here</a></p>
+
+        <h3>Ritz Chaudhury</h3>
+        <p>Phone Number: 8336957040</p>
+        <p><a href="mailto:ritzpark@gmail.com">Send an email here</a></p>
+
+        <h3>Sk Asik Ilahi</h3>
+        <p>Phone Number: 9681219325</p>
+        <p><a href="mailto:asik@gmail.com">Send an email here</a></p>
+
+        <h3>Suprotim</h3>
+        <p>Phone Number: 8334877853</p>
+        <p><a href="mailto:suprotim@gmail.com">Send an email here</a></p>
+
+        <br /><br />
+
+        <p>
+          <b>If you have any feedback please share it with us on </b
+          ><a href="mailto:feedback@AlgoTrade.com">mail</a>
+        </p>
+      </div>
+
+      <footer>&copy AlgoTrade</footer>
+    </div>
+  </body>
+</html>

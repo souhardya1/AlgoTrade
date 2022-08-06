@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/SignUp.css') }}">
+    <title>AlgoTrade</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static',filename='img/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static',filename='img/favicon-32x32')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static',filename='img/favicon-16x16')}}">
+
+</head>
+<body>
+    <div>
+        <div id="navbar">
+            <a  id="logo"  href="{{url_for('homepage')}}">AlgoTrade</a>
+            <a class="nav-link" id="about" href="{{url_for('about')}}">About Us</a>
+            <a class="nav-link" id="contact" href="{{url_for('contact')}}">Contact Us</a>
+             <a  class="nav-link" id="logout" href="{{url_for('signin')}}">Log Out</a>
+        </div>
+        <p>Please fill in this form to create an account.</p>
+        <div id="main-container">
+            <form method="post">
+                <div class="container">
+                    <label for="nname">Name</label><br>
+                  <input type="text" placeholder="Enter your Name" name="nname" required><br>
+
+                  <label for="nemail" style="text-align:left" ">Email</label><br>
+                  <input type="text" placeholder="Enter Email" name="nemail" required><br>
+
+                  <label for="npassword">Password</label><br>
+                  <input type="password" placeholder="Enter Password" name="npassword" required><br>
+
+                  <label for="psw-repeat">Repeat Password</label><br>
+                  <input type="password" placeholder="Repeat Password" name="psw-repeat" required><br>
+
+                  <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p><br>
+
+                  <div class="clearfix">
+                    <button type="submit" class="btn" id="signupbtn">Sign Up</button>
+                    <button type="button" class="btn" id="cancelbtn" >Cancel</button>
+
+                  </div>
+                </div>
+              </form>
+        </div>
+        <div id="error-container">
+          {% for message in get_flashed_messages() %}
+            <p id="error">{{message}}</p>
+          {% endfor %}
+        </div>
+
+
+    </div>
+
+    <script type="text/javascript">
+      document.getElementById("cancelbtn").onclick = function () {
+          location.href = "{{url_for('signin')}}";
+      };
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

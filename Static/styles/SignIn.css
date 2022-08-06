@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat:ital,wght@1,300&display=swap');
+body{
+    margin: 0;
+    background-color: black;
+}
+
+input[type=text], input[type=password] {
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#inpbtn {
+    background-color: #ADFF2F;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 20px;
+}
+
+#inpbtn:hover {
+
+    color: #ADFF2F;
+    background-color: black;
+    transition:  .5s ease-in-out;
+    box-shadow: .5s ease-in-out;
+
+}
+
+#navbar{
+    background-color: black;
+    overflow: hidden;
+    padding: 15px;
+}
+
+#signin{
+    width: 50%;
+    text-align: center;
+    /* border: solid 1px black; */
+    margin-left: 20%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#logo{
+    margin-right: 75%;
+    text-decoration: none;
+    color:#ADFF2F;;
+    font-size: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+#register{
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav-link{
+
+    text-decoration: none;
+    color: #ADFF2F;
+    padding: 20px;
+    font-size: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.nav-link:hover {
+    background-color: #ADFF2F;;
+    color: black;
+    transition:  .5s ease-in-out;
+    box-shadow: .5s ease-in-out;
+
+}
+
+.logo {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+#error{
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    background-color: #e57373;
+    font-family: 'Montserrat', sans-serif;
+}
